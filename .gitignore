@@ -1,0 +1,4 @@
+*.swp
+.RData
+.Rhistory
+test*
