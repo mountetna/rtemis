@@ -16,7 +16,7 @@ and returns a list() as output. The list() is transformed to
 JSON and returned.
 
 The argument list consists of numbers, strings, etc. The usual
-Etna JSON types of Matrix and Vector (e.g. { matrix: { rows,
+Etna JSON types of Matrix and Vector (i.e. { matrix: { rows,
 row_names, col_names } } and { vector: [ { label, value }, {
 label, value } ] }) are also acceptable and will be transformed
 into data.frame and vector R types respectively.
