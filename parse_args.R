@@ -24,15 +24,36 @@ parse_args = function(args) {
   )
 }
 
-# output transformations
-matrix_output = function(matrix) {
+vector_output = function(vec) {
   return(
     list(
-      row_names = rownames(matrix),
-      col_names = colnames(matrix),
-      rows = split(
-        t(as.matrix(matrix)),
-        rep(1:ncol(matrix), each=nrow(matrix))
+      vector=lapply(
+        seq_along(vec), function(i) {
+          return(
+            list(
+              label=names(vec)[[i]],
+              value=transform_outputs(vec[[i]])
+            )
+          )
+        }
+      )
+    )
+  )
+}
+
+# output transformations
+matrix_output = function(mat) {
+  return(
+    list(
+      matrix = list(
+        row_names = rownames(mat),
+        col_names = colnames(mat),
+        rows = array(
+          split(
+            as.matrix(mat),
+            1:ncol(mat)
+          )
+        )
       )
     )
   )
@@ -40,12 +61,9 @@ matrix_output = function(matrix) {
 
 # the main output transformation loop
 
-transform_outputs = function(outputs) {
-  outputs = lapply(outputs, function(output) {
-    if (class(output) == "matrix" || class(output) == "data.frame") return(matrix_output(output))
-    
-    return(output)
-  })
+transform_outputs = function(output) {
+  if (class(output) == "matrix" || class(output) == "data.frame") return(matrix_output(output))
+  if (class(output) == "list") return(vector_output(output))
 
-  return(toJSON(outputs))
+  return(output)
 }

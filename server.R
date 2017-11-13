@@ -3,8 +3,10 @@ library(rjson)
 
 source('./parse_args.R')
 source('./transpose.R')
+source('./diff_exp.R')
+source('./matrix.R')
+source('./pca.R')
 source('./sd.R')
-
 
 bad_request = function(msg) {
   list(
@@ -18,7 +20,7 @@ bad_request = function(msg) {
   )
 }
 
-func_name = function(func) {
+function_name = function(func) {
   return(paste("func", func, sep="_"))
 }
 
@@ -26,7 +28,7 @@ has_func = function(input) {
   return("func" %in% names(input)
     && length(input$func) == 1 
     && grep("^\\w+$", input$func)
-    && exists(func_name(input$func)))
+    && exists(function_name(input$func)))
 }
 
 has_args = function(input) {
@@ -43,15 +45,19 @@ rook = function(env) {
 
   if (!has_args(input)) return(bad_request("Invalid arguments specified"))
 
-  func = get(func_name(input$func))
+  func = get(function_name(input$func))
 
-  outputs = do.call(func,parse_args(input$args))
+  output = do.call(func,parse_args(input$args))
 
   list(
     status = 200,
     headers = list(
       'Content-Type' = 'application/json'
     ),
-    body = transform_outputs(outputs)
+    body = toJSON(
+      list(
+        output=transform_outputs(output)
+      )
+    )
   )
 }
