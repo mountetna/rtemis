@@ -10,3 +10,9 @@ func_scale = function(mat) {
 func_log = function(mat) {
   return(log(mat))
 }
+
+func_transpose = function(mat) {
+  return(
+    t(mat)
+  )
+}

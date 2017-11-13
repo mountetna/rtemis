@@ -2,7 +2,6 @@ library(Rook)
 library(rjson)
 
 source('./parse_args.R')
-source('./transpose.R')
 source('./diff_exp.R')
 source('./matrix.R')
 source('./pca.R')

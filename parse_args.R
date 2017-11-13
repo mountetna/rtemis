@@ -51,7 +51,7 @@ matrix_output = function(mat) {
         rows = array(
           split(
             as.matrix(mat),
-            1:ncol(mat)
+            1:nrow(mat)
           )
         )
       )
