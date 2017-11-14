@@ -16,3 +16,9 @@ func_transpose = function(mat) {
     t(mat)
   )
 }
+
+func_correlation = function(mat) {
+  return(
+    corr(mat)
+  )
+}
