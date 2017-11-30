@@ -17,8 +17,8 @@ func_transpose = function(mat) {
   )
 }
 
-func_correlation = function(mat) {
+func_correlation = function(m1,m2=NULL,method="spearman") {
   return(
-    corr(mat)
+    cor(m1, m2, method=method)
   )
 }
