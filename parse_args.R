@@ -43,16 +43,15 @@ vector_output = function(vec) {
 
 # output transformations
 matrix_output = function(mat) {
+  row_names = if (is.null(rownames(mat))) paste('R', 1:nrow(mat),sep="")
+  col_names = if (is.null(colnames(mat))) paste('C', 1:ncol(mat),sep="")
   return(
     list(
       matrix = list(
-        row_names = rownames(mat),
-        col_names = colnames(mat),
+        row_names = as.list(row_names),
+        col_names = as.list(col_names),
         rows = array(
-          split(
-            as.matrix(mat),
-            1:nrow(mat)
-          )
+          lapply(split(as.matrix(mat),1:nrow(mat)), as.list)
         )
       )
     )
