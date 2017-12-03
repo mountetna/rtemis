@@ -3,6 +3,7 @@ library(rjson)
 
 source('./parse_args.R')
 source('./diff_exp.R')
+source('./wilcox.R')
 source('./matrix.R')
 source('./pca.R')
 source('./sd.R')
