@@ -43,8 +43,8 @@ vector_output = function(vec) {
 
 # output transformations
 matrix_output = function(mat) {
-  row_names = if (is.null(rownames(mat))) paste('R', 1:nrow(mat),sep="")
-  col_names = if (is.null(colnames(mat))) paste('C', 1:ncol(mat),sep="")
+  row_names = if (is.null(rownames(mat))) paste('R', 1:nrow(mat),sep="") else rownames(mat)
+  col_names = if (is.null(colnames(mat))) paste('C', 1:ncol(mat),sep="") else colnames(mat)
   return(
     list(
       matrix = list(
