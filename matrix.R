@@ -1,10 +1,10 @@
 func_center = function(mat) {
   # recenter a matrix
-  return(scale(mat, scale=FALSE))
+  return(t(scale(t(mat), scale=FALSE)))
 }
 
 func_scale = function(mat) {
-  return(scale(mat, center=FALSE))
+  return(t(scale(t(mat), center=FALSE)))
 }
 
 func_log = function(mat) {
