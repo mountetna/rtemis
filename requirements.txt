@@ -1,0 +1,8 @@
+package	source
+statmod	CRAN
+rjson	CRAN
+Rook	CRAN
+exactRankTests	CRAN
+edgeR	bioconductor
+limma	bioconductor
+qvalue	bioconductor
