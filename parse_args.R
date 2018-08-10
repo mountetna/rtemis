@@ -2,8 +2,8 @@
 
 matrix_arg = function(mat) {
   m = as.data.frame(t(as.data.frame(mat$rows)))
-  rownames(m) = if (all(mat$row_names == NULL)) paste('R', 1:length(mat$row_names),sep="") else mat$row_names
-  colnames(m) = if (all(mat$col_names == NULL)) paste('C', 1:length(mat$col_names),sep="") else mat$col_names
+  rownames(m) = if (length(mat$row_names) != length(unique(mat$row_names))) paste('R', 1:length(mat$row_names),sep="") else mat$row_names
+  colnames(m) = if (length(mat$col_names) != length(unique(mat$col_names))) paste('C', 1:length(mat$col_names),sep="") else mat$col_names
   return(m)
 }
 
