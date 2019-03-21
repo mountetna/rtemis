@@ -8,6 +8,8 @@ source('./matrix.R')
 source('./pca.R')
 source('./sd.R')
 source('./beeswarm.R')
+source('./normal.R')
+source('./density.R')
 
 bad_request = function(msg) {
   list(
