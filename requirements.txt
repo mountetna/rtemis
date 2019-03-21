@@ -6,3 +6,4 @@ exactRankTests	CRAN
 edgeR	bioconductor
 limma	bioconductor
 qvalue	bioconductor
+beeswarm	CRAN
