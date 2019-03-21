@@ -40,7 +40,10 @@ rook = function(env) {
   # what DO we want to do?
   request = Request$new(env)
   body = rawToChar(request$body()$read())
-  input = fromJSON(body)
+  input = fromJSON(
+    body,
+    simplify=FALSE
+  )
 
   if (!has_func(input)) return(bad_request("Invalid function specified"))
 
