@@ -7,6 +7,7 @@ source('./wilcox.R')
 source('./matrix.R')
 source('./pca.R')
 source('./sd.R')
+source('./beeswarm.R')
 
 bad_request = function(msg) {
   list(
@@ -26,7 +27,7 @@ function_name = function(func) {
 
 has_func = function(input) {
   return("func" %in% names(input)
-    && length(input$func) == 1 
+    && length(input$func) == 1
     && grep("^\\w+$", input$func)
     && exists(function_name(input$func)))
 }
